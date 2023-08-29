@@ -1,0 +1,83 @@
+/* Mock.css */
+
+/* Reset some default styles */
+body, ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  background-color: #ccc;
+  font-family: Arial, sans-serif;
+}
+
+.mock-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #333;
+  color: #fff;
+  height: 100vh;
+  overflow-x: hidden;
+  transition: width 0.3s;
+}
+
+.sidebar.open {
+  width: 240px;
+}
+
+.hamburger {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.bar:first-child {
+  transform: rotate(0) translate(0, 0);
+}
+
+.bar:nth-child(2) {
+  opacity: 1;
+}
+
+.bar:last-child {
+  transform: rotate(0) translate(0, 0);
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li{
+  padding: 15px 20px;
+  transition: background-color 0.3s;
+  color: white;
+}
+.menu li a{
+
+  color: white;
+  text-decoration: none;
+}
+
+.menu li:hover {
+  background-color: #444;
+}
+
+
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}

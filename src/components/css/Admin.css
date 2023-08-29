@@ -1,0 +1,143 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.admin{
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+}
+
+
+.admin-top{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px; /* Use a consistent unit like rem for padding */
+  align-items: center; /* Vertically align the items */
+
+  height: 18%;
+
+
+}
+
+.admin-right{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-right: 50px;
+  margin-top: 10px;
+}
+
+.admin-heading{
+  font-size: 3rem;
+  font-weight: 900;
+
+}
+
+.admin-subheading{
+ padding-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.admin-left{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.admin-button-job{
+  padding: 10px;
+  width: 150px;
+  border-radius: 15px;
+  background-color: #3792DE;
+  color: white;
+  border-color: #3792DE;
+  box-shadow: none;
+  cursor: pointer;
+  border: none;
+}
+
+.admin-middle{
+
+  width: 90%;
+  min-height: 500px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  justify-content: space-evenly;
+
+}
+
+.admin-job-heading{
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+.admin-inputs{
+  min-height: 28%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.admin-input-job{
+  padding: 20px;
+  border-radius: 50px;
+}
+
+.admin-file-upload{
+  display: flex;
+  padding-left: 70px;
+  gap: 5px;
+}
+
+hr{
+  margin-top: 20px;
+  width: 100%;
+}
+
+.admin-bottom{
+ min-height: 400px;
+ width: 92%;
+padding: 30px;
+
+}
+
+.admin-job{
+  margin-top: 10px;
+  gap: 10px;
+  background-color: #D9D9D9;
+  width: 100% ;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+
+}
+
+.job-top{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.admin-job-left{
+
+  padding-left: 10px;
+  font-size: large;
+}
+
+.admin-job-right{
+  padding-right: 20px;
+  gap: 10px;
+  display: flex;
+}
