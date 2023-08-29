@@ -13,6 +13,8 @@ import Admin from './components/js/Admin'
 import Candidate from './components/js/Candidate';
 
 function App() {
+
+
   const [currentStep, setCurrentStep] = useState(1);
 
   const handleNext = (file) => {
