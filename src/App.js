@@ -11,10 +11,10 @@ import Mock from './components/js/Mock';
 import { UserAuthContextProvider } from './components/context/UserAuthContext';
 import Admin from './components/js/Admin'
 import Candidate from './components/js/Candidate';
+import Admin1 from './components/js/Admin1';
+import Candidate1 from './components/js/Candidate1';
 
 function App() {
-
-
   const [currentStep, setCurrentStep] = useState(1);
 
   const handleNext = (file) => {
@@ -37,8 +37,10 @@ function App() {
           <Route path='/mock' element={<Mock />}></Route>
           
           <Route path='/admin' element={<Admin />}></Route>
+          <Route path='/admin1' element={<Admin1 />}></Route>
 
           <Route path='/candidate' element={<Candidate />}></Route>
+          <Route path='/candidate1' element={<Candidate1 />}></Route>
 
           <Route path='/mock/step1' element={<Step1 onNext={handleNext} />}></Route>
           <Route path='/mock/step2' element={<Step2 onNext={handleNext} />}></Route>

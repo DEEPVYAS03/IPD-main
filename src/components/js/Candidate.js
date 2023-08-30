@@ -1,8 +1,16 @@
 import "../css/Candidate.css";
 import { Link } from "react-router-dom";
 import JobCard from "./JobCard";
+import React, { useState } from "react";
+import Candidate1 from "./Candidate1"; 
+
 
 const Candidate = () => {
+  const [selectedJobTitle, setSelectedJobTitle] = useState("");
+
+  const handleApply = (jobTitle) => {
+    setSelectedJobTitle(jobTitle);
+  };
   return (
     <div className="candidate">
       <div className="candidate-top">
@@ -19,7 +27,9 @@ const Candidate = () => {
           </div>
         </div>
       </div>
-      <JobCard isAdmin={false} />
+
+      <JobCard isAdmin={false} onApply={handleApply} />
+
     </div>
   );
 };

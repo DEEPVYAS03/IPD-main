@@ -3,9 +3,22 @@ import { db } from "../../firebase"; // Adjust the import path
 import '../css/Admin.css'
 import JobDataService from '../../services'
 
-const JobCard = ({ isAdmin, getJobId }) => {
-  const [jobs, setJobs] = useState([]);
+const JobCard = ({ isAdmin, onApply,getJobId }) => {
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
+
+  const openModal = (job) => {
+    setSelectedJob(job);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedJob(null);
+    setModalOpen(false);
+  };
+
+  const [jobs, setJobs] = useState([]);
   useEffect(() => {
     getJobs();
   }, []);
@@ -25,9 +38,7 @@ const JobCard = ({ isAdmin, getJobId }) => {
     <div className="admin-bottom">
       <div className="job-top">
         <h1>{isAdmin ? "Jobs Created" : "Available Jobs"}</h1>
-        <div className="refresh-button">
-          <button className="admin-button-job" onClick={getJobs}>Refresh</button>
-        </div>
+        <div className="refresh-button"><button className="admin-button-job" onClick={getJobs}>Refresh</button></div>
       </div>
 
       {jobs.map((doc) => (
@@ -40,27 +51,55 @@ const JobCard = ({ isAdmin, getJobId }) => {
                   <button className="admin-button-job">Check details</button>
                 </div>
                 <div className="job-buttons">
-                  <button className="admin-button-job" onClick={() => getJobId(doc.id, doc.title, doc.skills)}>
+                <button
+                    className="admin-button-job"
+                    onClick={() => getJobId(doc.id, doc.title, doc.skills)}
+                  >
                     Edit
                   </button>
                 </div>
                 <div className="job-buttons">
-                  <button className="admin-button-job" onClick={() => deleteHandler(doc.id)}>Delete</button>
+                  <button className="admin-button-job" onClick={(e) => deleteHandler(doc.id)}>Delete</button>
                 </div>
               </>
             ) : (
               <>
                 <div className="job-buttons">
-                  <button className="admin-button-job">Read JD</button>
+                  <button className="admin-button-job" onClick={() => openModal(doc)}>Read JD</button>
                 </div>
                 <div className="job-buttons">
-                  <button className="admin-button-job">Apply</button>
+                  <button
+                    className="admin-button-job"
+                    onClick={() => {
+                      onApply(doc.title);
+                      window.location.href = `/candidate1?jobTitle=${encodeURIComponent(doc.title)}`;
+                    }}
+                  >
+                    Apply
+                  </button>
                 </div>
               </>
             )}
           </div>
         </div>
       ))}
+      {modalOpen && selectedJob && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <h1>{selectedJob.title}</h1>
+            <h2>Skills Required:</h2>
+            <ul>
+              {selectedJob.skills.map((skill, index) => (
+                <li key={index}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

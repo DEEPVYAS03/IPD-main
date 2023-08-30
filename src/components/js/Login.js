@@ -42,6 +42,11 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    if (!selectedRole) {
+      alert("Please select a role before submitting.");
+      return; // Don't proceed further
+    }
+  
     try {
       // await logIn(email, password);
       // navigate("/home");
@@ -52,6 +57,14 @@ function Login() {
       if(selectedRole=='login-Admin' && email=='admin987@gmail.com' && password=='987Admin@'){
         await logIn(email, password);
         navigate("/admin");
+        
+      }
+      else if(selectedRole=='login-Admin' && (email!='admin987@gmail.com' || password!='987Admin@')){
+        alert("Invalid login details")
+        
+      }
+      else if((selectedRole=='login-Mock_Candidate'||selectedRole=='login-Candidate') && (email=='admin987@gmail.com' || password=='987Admin@')){
+        alert("Invalid login details")
         
       }
       else if( selectedRole=='login-Mock_Candidate' ){
